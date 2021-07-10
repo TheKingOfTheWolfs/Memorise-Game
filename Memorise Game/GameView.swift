@@ -8,26 +8,19 @@
 import SwiftUI
 
 
-
 class GameView {
-    private var model: GameModel<String> = GameModel<String>(numberOfPairsOfCards: 4)
+    static let emojis = ["🚗", "🏎", "🚕", "🚅", "✈️", "🛩", "🚀", "🛰", "🛥", "🛳", "🚢", "🛺", "🏍", "🚋", "⛵️", "🚁"]
     
-    static let emojis = ["🚗", "🏎,", "🚕", "🚅", "✈️", "🛩"]
-    
-    
-    
-    
-    
+
+    static func createGameModel() -> GameModel<String> {
+        GameModel<String>(numberOfPairsOfCards: 5) { pairIndex in emojis[pairIndex] }
+    }
     
     
     
     
     
-    
-    
-    
-    
-    
+    private var model: GameModel<String> = createGameModel()
     
     var cards: Array<GameModel<String>.Card> {
         model.cards

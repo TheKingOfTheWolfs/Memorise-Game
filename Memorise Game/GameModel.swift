@@ -12,7 +12,7 @@ struct GameModel<CardContent> {
     
     mutating func choose (_ card: Card) {
         let chosenIndex = index(of: card)
-        cards[chosenIndex].IsFaceUp.toggle()
+        cards[chosenIndex].isFaceUp.toggle()
         
     }
     
@@ -28,9 +28,9 @@ struct GameModel<CardContent> {
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
         cards = Array<Card>()
         for pairIndex in 0..<numberOfPairsOfCards {
-            let content: CardContent = createCardContent(pairIndex)
-            cards.append(Card(context: content))
-            cards.append(Card(context: content))
+            let content = createCardContent(pairIndex)
+            cards.append(Card(content: content, id: pairIndex*2))
+            cards.append(Card(content: content, id: pairIndex*2+1))
         }
     }
     
@@ -41,12 +41,11 @@ struct GameModel<CardContent> {
     
     
     
-    struct Card {
-        var IsFaceUp: Bool = false
+    struct Card: Identifiable {
+        var isFaceUp: Bool = false
         var isMatched: Bool = false
-        var context: CardContent
-//        var id: Identifiable
-        
+        var content: CardContent
+        var id: Int
     }
     
     
