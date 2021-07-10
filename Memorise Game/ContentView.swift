@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    var emojis = ["🚗", "🏎,", "🚕", "🚅", "✈️", "🛩"]
-    @State var emojiCount = 2
+    var viewModel: GameView
     
     var body: some View {
         
@@ -24,11 +22,7 @@ struct ContentView: View {
             
         }//LazyVGrid
         }//ScrollView
-                Spacer()
             HStack {
-                delete
-                Spacer()
-                add
                 
             }//Hstack(buttons)
             .font(.largeTitle)
@@ -38,30 +32,6 @@ struct ContentView: View {
     
     }//View
     
-    var add : some View {
-        Button(action: {
-            if emojiCount < emojis.count {
-            emojiCount += 1
-            }
-        }, label: {
-            VStack {
-            Image(systemName: "plus.circle")
-            }
-            
-        })
-    }
-    var delete : some View {
-        Button(action: {
-            if emojiCount > 1 {
-            emojiCount -= 1
-            }
-        }, label: {
-            VStack {
-            Image(systemName: "minus.circle")
-            }
-            
-        })
-    }
         }//View
     
         
@@ -72,7 +42,7 @@ struct ContentView: View {
 
 struct GameCard: View {
     var content: String
-    @State var isFacedUp : Bool = true
+    
 
     var body: some View {
     let shape = RoundedRectangle(cornerRadius: 20)
@@ -86,7 +56,7 @@ struct GameCard: View {
             else {
                 shape.fill()
             }
-            }.onTapGesture { isFacedUp = !isFacedUp }
+            }
         
     }
 }
