@@ -13,7 +13,7 @@ struct GameModel<CardContent> {
     mutating func choose (_ card: Card) {
         let chosenIndex = index(of: card)
         cards[chosenIndex].isFaceUp.toggle()
-        
+        print("\(cards)")
     }
     
     func index(of card: Card) -> Int {
@@ -22,7 +22,7 @@ struct GameModel<CardContent> {
                 return index
             }
         }
-          return 0
+          return 0// quick solution, don't forget to fix it!
     }
     
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
@@ -33,11 +33,6 @@ struct GameModel<CardContent> {
             cards.append(Card(content: content, id: pairIndex*2+1))
         }
     }
-    
-    
-    
-    
-    
     
     
     
