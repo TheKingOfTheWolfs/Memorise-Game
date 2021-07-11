@@ -8,7 +8,8 @@
 import SwiftUI
 
 
-class GameView {
+class GameView: ObservableObject {
+    
     static let emojis = ["🚗", "🏎", "🚕", "🚅", "✈️", "🛩", "🚀", "🛰", "🛥", "🛳", "🚢", "🛺", "🏍", "🚋", "⛵️", "🚁"]
     
 
@@ -20,7 +21,7 @@ class GameView {
     
     
     
-    private var model: GameModel<String> = createGameModel()
+    @Published private var model: GameModel<String> = createGameModel()
     
     var cards: Array<GameModel<String>.Card> {
         model.cards
@@ -31,8 +32,7 @@ class GameView {
     
     //MARK: - Intent(s)
     
-    func choose(_ card: GameModel<String>.Card) {
-        model.choose(card)
+    func choose(_ card: GameModel<String>.Card) {        model.choose(card)
     }
     
     

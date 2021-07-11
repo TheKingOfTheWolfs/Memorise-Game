@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let viewModel: GameView
+    @ObservedObject var viewModel: GameView
     
     var body: some View {
         
